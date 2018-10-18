@@ -19,7 +19,8 @@ This scene is using a hybrid approach to Monobehaviors, Entities, and Components
 ### Results
 These results are measured in ***CPU ms time*** for the rotation of 50k cubes on screen. 
 
-**Monobehavior Approach: ** ~315ms
-**Hybrid Approach: ** ~245ms
+**Monobehavior Approach:** ~315ms
+
+**Hybrid Approach:** ~245ms
 
 As you can see the results show about a 22.22% improvement in performance just from partly transitioning to Unity's new ECS system. Now I wonder how it'll do once I transition to full ECS for this test.
