@@ -1,11 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Unity.Entities;
 
 public class HybridRotatorComponent : ComponentSystem
 {
-    struct Components
+    private ComponentGroupArray<Components> eList;
+
+    private bool hasEntities = false;
+
+    public struct Components
     {
         public DataBehavior data;
         public Transform transform;
@@ -16,7 +18,12 @@ public class HybridRotatorComponent : ComponentSystem
     {
         int speed = 100;
 
-        ComponentGroupArray<Components> eList = GetEntities<Components>();
+        // Only do a getEntities when we need to.
+        if (!hasEntities && eList.Length < 1)
+        {
+            eList = GetEntities<Components>();
+            hasEntities = true;
+        }
 
         float d = Time.deltaTime;
 
