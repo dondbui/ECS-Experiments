@@ -46,4 +46,4 @@ This approach uses a single monobehavior to initialize the EntityManager and spa
 ### Current Assessment: 
 As you can see the results show about a 22.22% improvement in performance just from partly transitioning to Unity's new ECS system. Unfortunately though the fact that we still have a monobehavior on all 50k cubes is still enough overhead to make the hybrid approach still lose out to the single monobehavior approach. 
 
-Now I wonder how it'll do once I transition to full ECS for this test.
+Wow. When looking at the pure ECS approach we get greatly improved performance. 78% better performance over the hybrid approach. The paradigm shift is substantial than from how one thinks with the current Game Object + Monobehavior approach. 
