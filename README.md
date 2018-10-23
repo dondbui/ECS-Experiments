@@ -10,6 +10,7 @@ The rotating cube test I currently have is comprised of three scenes currently.
 - MainScene (I know it's a terrible name. I defaulted to my old quick prototyping name)
 - HybridScene
 - SingleBehaviorScene
+- PureECS
 
 ### MainScene 
 This scene is doing thing the ole-fashioned Unity recommended way of throwing a Monobehavior on a GameObject and letting that MonoBehavior handle the rotating of the cube. It's all done by **RotateBehavior** that's been dropped onto the **behaviorCube** GameObject prefab. 
@@ -20,18 +21,29 @@ This scene is using a hybrid approach to Monobehaviors, Entities, and Components
 ### SingleBehaviorScene
 This is a single monobehavior that spawns the cubes, keeps reference to them, and handles the rotation on update.
 
+### PureECS
+This scene is my attempt at making an almost pure ECS cube spawner and rotator. 
+
 ### Results
 These results are measured in ***CPU ms time*** for the rotation of 50k cubes on screen. 
 
 **Monobehavior Approach:** ~230ms
+
 This approach was one monobehavior on each cube
 
 **Hybrid Approach:** ~160ms
+
 This approach was to use a hybrid ECS approach.
 
 **Single Monobehavior Approach:** ~140ms
+
 This approach used a single monobehavior in the whole scene which spawned and rotated the cubes
 
+**Pure ECS Approach: ** ~45ms
+
+This approach uses a single monobehavior to initialize the EntityManager and spawns the entities from the prefab. **ECSRotatorSystem** handles the rotation of the cube entities. 
+
+### Current Assessment: 
 As you can see the results show about a 22.22% improvement in performance just from partly transitioning to Unity's new ECS system. Unfortunately though the fact that we still have a monobehavior on all 50k cubes is still enough overhead to make the hybrid approach still lose out to the single monobehavior approach. 
 
 Now I wonder how it'll do once I transition to full ECS for this test.
