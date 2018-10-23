@@ -39,7 +39,7 @@ This approach was to use a hybrid ECS approach.
 
 This approach used a single monobehavior in the whole scene which spawned and rotated the cubes
 
-**Pure ECS Approach: ** ~45ms
+**Pure ECS Approach:** ~45ms
 
 This approach uses a single monobehavior to initialize the EntityManager and spawns the entities from the prefab. **ECSRotatorSystem** handles the rotation of the cube entities. 
 
